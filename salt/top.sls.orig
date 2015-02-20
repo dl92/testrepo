@@ -1,0 +1,6 @@
+base:
+  '*':
+    - webserver
+  'class:CS126':
+    - webserver
+    
