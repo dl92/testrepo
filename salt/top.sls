@@ -5,6 +5,9 @@ base:
     - userstudent
 #    - vi
     - iptables
+    - nfs-config
+    - nfs
+    - sshd
   'class:CS126':
     - webserver
     
