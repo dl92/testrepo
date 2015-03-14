@@ -1,0 +1,13 @@
+#CS126 
+#LAB 9
+#Debbie Lane 2/19/15
+#Share out /home/public to everyone but squash all users
+#Share out /home/private to the local network and allow root
+#/var/test    *(rw,no_root_squash) #Don't do this insecure
+/var/test    *(rw,)          
+
+/home/public *(rw,all_squash)				# * Everyone rw squash ALL users down to nobody user
+
+/home/private 192.168.0.*(rw,no_root_squash) 	# Export to LOCAL Network based on SM/*all hosts in this network
+
+
