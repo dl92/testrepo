@@ -1,0 +1,20 @@
+
+#
+# /etc/fstab
+# Created by anaconda on Tue Sep 25 01:19:30 2012
+#
+# Accessible filesystems, by reference, are maintained under '/dev/disk'
+# See man pages fstab(5), findfs(8), mount(8) and/or blkid(8) for more info
+#
+/dev/mapper/VolGroup00-LogVol00 /                       ext4    defaults        1 1
+UUID=bc3e26b2-dfa2-45e6-b543-c1b679f625e2 /boot                   ext3    defaults        1 2
+/dev/mapper/VolGroup00-LogVol01 swap                    swap    defaults        0 0
+tmpfs                   /dev/shm                tmpfs   defaults        0 0
+devpts                  /dev/pts                devpts  gid=5,mode=620  0 0
+sysfs                   /sys                    sysfs   defaults        0 0
+proc                    /proc                   proc    defaults        0 0
+classserver:/var/share  /var/share              nfs     defaults        0 0
+/dev/mapper/lvdecrypted /home			ext4	defaults	1 2
+/dev/vghttpd/lvhttpd	/var/www/html		ext4	defaults,acl	1 2
+192.168.0.126:/var/www	/mnt/var/www              nfs     defaults        1 2
+//804266456.acs.edcc.edu/html	/mnt/smbprihtml	cifs	defaults,username=dlane,credentials=/etc/samba/smbcred	0 0
