@@ -1,13 +1,8 @@
 base:
   '*':
-    - webserver
-    - htop
-    - userstudent
-#    - vi
-    - iptables
-    - nfs-config
+    - services
     - nfs
-    - sshd
-  'class:CS126':
-    - webserver
+    - apache
+    - samba
+    - fstab
     
