@@ -9,6 +9,14 @@
 #Using string operators this script is 3 lines long including the #!/bin/bash line
 
 set -o nounset
+VAR="10"
+
+
+echo "Arg1 is ${1:?}"
+echo "Arg2 is ${2:-10}"
+
+VAR="$2"
+
 
 
 
