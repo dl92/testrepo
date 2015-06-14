@@ -1,0 +1,80 @@
+#!/bin/bash
+set -o nounset
+
+OLDIFS=${IFS}                  #Save old Field Separator b4 change
+IFS=$'\n'                      #Change default Field Separator
+
+CLEANUP() {
+    rm "${MODTIMEFILE}"
+    rm "${TEMPFILE2}"
+    exit
+}
+
+trap CLEANUP SIGINT
+
+MODTIMEFILE=$(mktemp)
+MMMDD=$(mktemp)
+
+#MODTIMEFILE=$(mktemp)
+MODTIME=$(stat -c %y /root/timefiles/* > $MODTIMEFILE)
+#$1=1
+#MODTIME=$(stat -c %y%n /root/timefiles/* > $MODTIMEFILE)
+#MMMDD=$(date -f $MODTIMEFILE "+%b %d")
+#MMMDD=$(date -f $MODTIMEFILE "+%b %d")
+#MMMDD=$(date -f $MODTIMEFILE "+%b %d%n")
+#MMM=$(date -f $MODTIMEFILE +%b)
+#DD=$(date -f $MODTIMEFILE +%d)
+
+#for ITEM in $(cat ${$MODTIMEFILE}) ;do
+#ORIGFILE=${MODTIME##*/}
+#echo $ORIGFILE
+#    MMMDD=$(date -f $MODTIMEFILE "+%b %d")
+date -f $MODTIMEFILE "+%b %d" > ${MMMDD}
+#    echo $MMMDD
+#while [ ! -z $MMMDD ] ;do
+for ITEM in $(cat ${MMMDD})  ;do
+#    MODMONTH=${MMMDD:3}
+    MODMONTH=${ITEM%% *}
+    echo "MODMONTH is $MODMONTH"
+
+if [[ ! -e /tmp/test/${MODMONTH} ]] ;then 
+    mkdir -p "/tmp/test/${MODMONTH}" 
+
+#    cd "/tmp/test/${MODMONTH}"
+
+
+    MODDAY=${ITEM: -2}
+    echo "MODDAY is $MODDAY"
+    cd /tmp/test/${MODMONTH}
+        if [[ ! -e /tmp/test/${MODMONTH}/${MODDAY} ]] ;then
+            mkdir -p "/tmp/test/${MODMONTH}/${MODDAY}"
+        fi
+fi
+
+#    shift
+#if [[ ! -e /tmp/test/${MODMONTH} ]] ;then 
+#    mkdir -p "/tmp/test/${MODMONTH}" 
+#    cd "/tmp/test/${MODMONTH}"
+#        if [[ ! -e /tmp/test/${MODMONTH}/${MODDAY} ]] ;then
+#            mkdir -p "/tmp/test/${MODMONTH}/${MODDAY}"
+#       fi 
+#fi
+done
+
+IFS=${OLDIFS}                  #Put original FS back after.
+
+#    MODMONTH=${MMMDD%%/*}
+#    MODMONTH=${MMMDD% *}
+#    echo "Mod Month is $MODMONTH"
+#    MODDAY=${MMMDD##*/}
+#    echo "Mod Day is $MODDAY"
+#done
+#if [[ ! -e /tmp/test/${MMM} ]] ;then 
+#    mkdir "/tmp/${MMM}"; cd /tmp/${MMM}; mkdir ${DD}
+#    mkdir -p /tmp/test/${MMM}
+#fi
+#if [[ ! -de 
+        
+
+
+exit

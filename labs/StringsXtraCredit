@@ -1,0 +1,16 @@
+#!/bin/bash
+#6/1/15
+#Debbie Lane
+#CS225 Xtra Credit Strings
+#Make a shell script that will take two arguments and
+#complain and exit if the first doesn't exist and
+#set a default value of 10 if the second doesn't exist
+
+#can't assign or change $1, $2 - assign to var then work on it
+VAR1=${1:?"First paramater missing - exiting"}
+VAR2=${2:-10}
+#VAR2=${2:+10}
+
+
+echo $1
+echo $2

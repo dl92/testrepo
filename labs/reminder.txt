@@ -1,0 +1,40 @@
+*pg 120 look at var and see if spawn subshell or not
+*[[ ]] built into the sell, don't have to load any code from disk, so faster
+* so use double square brackets [[ ]] instead of test 
+
+*process list creates a subshell (pwd;ls)
+*use curly brackets {} for command grouping, does NOT create a subshell
+*double quote is command substution
+#echo "${var}1 test"
+*command substitution creates a subshell to run the enclosed command
+*Any variables you create in the script aren't available to the subshell command
+
+*running a cmd from the command promt using ./path also creates a subshell
+*but they aren't created if yu just run the cmd without a path
+
+*built-in commands don't generate a subshell
+#echo $BASH_SUBSHELL  to see if subshell was created
+
+*Built-in command are complied into the shell
+*they do not need to fork child process (like external cmd)
+*so Built-in commands are faster more efficient
+
+*Some cmd have both external & built-in versions
+*to see use type -a
+#type -a echo
+#type -a pwd
+*use the one in the shell unles there is a specific reason
+*to use the one on disk
+
+*set - displays all variables defined for a specific process
+*including both local & global environment variables
+*and user-defined variables
+#set
+
+#set -o nounset (cannot use var unless declared - put at top of script)
+*Nice help you write a little bit more structured.
+
+*set -o noexec sh -n - Don't run command, just check for syntax
+
+*Get in habit of using curly bracket echo ${var}1  or is it ${var1}
+

@@ -1,0 +1,13 @@
+#!/bin/bash
+#${varname:?$var}   #If $varname isn't null return it's value,
+#otherwise print varname: followed by $var and abort the command
+
+#${varname:+$var}   #If $varname isn't null, return $var, otherwise return null.
+
+fooqm=
+echo ${fooqm:?"parm is empty"}
+echo $?
+
+fooqm=barqm
+echo ${fooqm:?"parm is empty"}
+echo $?

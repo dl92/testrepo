@@ -1,0 +1,11 @@
+#!/bin/bash
+if [[ "$UID"=0 ]] ;then
+echo "blah"
+else
+VARHOME=$(whoami | grep /etc/passwd | awk -F: '{print $7}' /etc/passwd )
+fi
+
+
+if [[ ${NAME} = bob && ${NAME} = ted ]] ;then
+     echo "blah blah"
+fi
